@@ -9,7 +9,7 @@ public class Broken {
 
     public static final String NEW_VALUE = "";
 
-    public void broken() { }
+    Broken() { }
 
     public void echo() { }
 
