@@ -30,8 +30,7 @@ public class Calculator {
         Calculator calculator = new Calculator();
         int rsl = calculator.multiply(5);
         System.out.println(rsl);
-        Calculator calculator1 = new Calculator();
-        int result1 = calculator1.sumAllOperation(2);
+        int result1 = calculator.sumAllOperation(2);
         System.out.println(result1);
     }
 }
