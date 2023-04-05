@@ -9,11 +9,11 @@ public class Bus implements Transport {
 
     @Override
     public void passengers(int num) {
-        num = 48;
+        System.out.println(num);
     }
 
     @Override
-    public double fuel(double liters, double price) {
-        return Transport.super.fuel(liters, price);
+    public double fuel(double liters) {
+        return Transport.super.fuel(liters);
     }
 }
