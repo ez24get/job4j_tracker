@@ -13,7 +13,7 @@ public class Bus implements Transport {
     }
 
     @Override
-    public double fuel(double liters) {
-        return Transport.super.fuel(liters);
+    public double fuel(double liter) {
+        return liter * 50;
     }
 }
