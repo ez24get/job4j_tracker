@@ -46,7 +46,8 @@ public class StartUITest {
                         + "0. Edit item" + ln
                         + "1. Exit Program" + ln
                         + "=== Edit item ===" + ln
-                        + "Отредактированна заявка: Item{id=1, name='New Test Name', "
+                        + "Отредактированна заявка: Item{id="
+                        + one.getId() + ", name='" + replaceName + "', "
                         + created.format(FORMATTER) + "}" + ln
                         + "Menu:" + ln
                         + "0. Edit item" + ln
