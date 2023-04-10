@@ -46,8 +46,8 @@ public class Item {
     public String toString() {
         return "Item{"
                 + "id=" + id
-                + ", name='" + name + '\''
-                + ", created=" + created.format(FORMATTER)
+                + ", name='" + name + "',"
+                + " " + created.format(FORMATTER)
                 + '}';
     }
 }

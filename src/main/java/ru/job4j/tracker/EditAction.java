@@ -9,12 +9,12 @@ public class EditAction implements UserAction {
 
     @Override
     public String name() {
-        return "Edit Item";
+        return "Edit item";
     }
 
     @Override
     public boolean execute(Input input, Tracker tracker) {
-        out.println("=== Edit Item ===");
+        out.println("=== Edit item ===");
         int id = input.askInt("Enter ID: ");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
