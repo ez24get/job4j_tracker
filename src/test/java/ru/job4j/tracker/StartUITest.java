@@ -1,15 +1,9 @@
 package ru.job4j.tracker;
 
 import org.junit.jupiter.api.Test;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class StartUITest {
-    private LocalDateTime created = LocalDateTime.now();
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MMMM-EEEE-yyyy HH:mm:ss");
 
     @Test
     public void whenCreateItem() {
@@ -41,14 +35,14 @@ public class StartUITest {
         };
         new StartUI(out).init(in, tracker, actions);
         String ln = System.lineSeparator();
+        one.setName(replaceName);
         assertThat(out.toString()).isEqualTo(
                 "Menu:" + ln
                         + "0. Edit item" + ln
                         + "1. Exit Program" + ln
                         + "=== Edit item ===" + ln
-                        + "Отредактированна заявка: Item{id="
-                        + one.getId() + ", name='" + replaceName + "', "
-                        + created.format(FORMATTER) + "}" + ln
+                        + "Отредактированна заявка: "
+                        + one + ln
                         + "Menu:" + ln
                         + "0. Edit item" + ln
                         + "1. Exit Program" + ln
