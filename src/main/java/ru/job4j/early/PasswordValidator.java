@@ -1,7 +1,5 @@
 package ru.job4j.early;
 
-import java.util.Arrays;
-
 public class PasswordValidator {
     private static final String[] FORBIDDEN = {"qwerty", "12345", "password", "admin", "user"};
 
@@ -34,6 +32,10 @@ public class PasswordValidator {
             if (Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
             }
+            if (hasUpCase && hasLowCase
+                    && hasDigit && hasSpecial) {
+                break;
+            }
         }
         if (!hasUpCase) {
             throw new IllegalArgumentException(
@@ -56,32 +58,17 @@ public class PasswordValidator {
             );
         }
 
-        char[] passwordF = password.toCharArray();
-        for (int p = 0; p < passwordF.length; p++) {
-            if ((passwordF[p] == FORBIDDEN[0].charAt(0)
-                    || Character.isUpperCase(passwordF[p])
-                    == Character.isUpperCase(FORBIDDEN[0].charAt(0))
-                    || Character.isLowerCase(passwordF[p])
-                    == Character.isLowerCase(FORBIDDEN[0].charAt(0)))) {
-                char[] check = Arrays.copyOfRange(passwordF, p, passwordF.length);
-                for (int i = 0; i < FORBIDDEN.length; i++) {
-                    char[] forbidden = FORBIDDEN[i].toCharArray();
-                    for (int j = 0; j < forbidden.length; j++) {
-                        if (check[j] == forbidden[j]
-                                || Character.isUpperCase(passwordF[p])
-                                == Character.isUpperCase(FORBIDDEN[i].charAt(j))
-                                || Character.isUpperCase(passwordF[p])
-                                == Character.isUpperCase(FORBIDDEN[i].charAt(j))) {
-                            throw new IllegalArgumentException(
-                                    "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
-                            );
-                        }
-                    }
-                }
+        String passwordF = password.toLowerCase();
+        for (String s : FORBIDDEN) {
+            if (passwordF.contains(s)) {
+                throw new IllegalArgumentException(
+                        "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
+                );
             }
         }
         return password;
     }
+
 }
 
 
