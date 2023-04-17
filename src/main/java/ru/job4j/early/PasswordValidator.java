@@ -29,7 +29,7 @@ public class PasswordValidator {
             if (Character.isDigit(symbol)) {
                 hasDigit = true;
             }
-            if (Character.isLetterOrDigit(symbol)) {
+            if (!Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
             }
             if (hasUpCase && hasLowCase
@@ -57,7 +57,6 @@ public class PasswordValidator {
                     "Password should contain at least one special symbol"
             );
         }
-
         String passwordF = password.toLowerCase();
         for (String s : FORBIDDEN) {
             if (passwordF.contains(s)) {
