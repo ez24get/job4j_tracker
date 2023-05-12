@@ -19,6 +19,6 @@ public class PassportOfficeTest {
         PassportOffice office = new PassportOffice();
         office.add(citizen);
         office.add(citizenDuplicate);
-        assertThat(office.get(citizen.getPassport()).equals(office.get(citizenDuplicate.getPassport()))).isFalse();
+        assertThat(office.add(citizenDuplicate)).isFalse();
     }
 }
