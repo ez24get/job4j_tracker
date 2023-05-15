@@ -46,7 +46,7 @@ public class AnalyzeByMap {
             }
             gpaSubject.put(pupils.get(i).subjects().get((int) count).name(), average / count);
         }
-        return List.of();
+        return gpaSubject;
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
