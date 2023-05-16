@@ -46,21 +46,11 @@ public class AnalyzeByMap {
             }
             gpaSubject.put(pupils.get(i).subjects().get((int) count).name(), average / count);
         }
-        return gpaSubject;
+        return gpaSubject.get();
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
-        List<Label> best = new ArrayList<>();
-        for (Pupil gpa : pupils) {
-            double max = 0;
-            for (Subject subject : gpa.subjects()) {
-                max += subject.score();
-            }
-            Label students = new Label(gpa.name(), max);
-            best.add(students);
-        }
-        Comparator.naturalOrder();
-        return avg;
+        return null;
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
