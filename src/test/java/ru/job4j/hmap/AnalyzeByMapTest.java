@@ -103,4 +103,64 @@ class AnalyzeByMapTest {
                 new Label("Philosophy", 70D)
         ));
     }
+
+    @Test
+    public void whenBestPupil() {
+        Label best = AnalyzeByMap.bestStudent(
+                List.of(
+                        new Pupil("Ivanov",
+                                List.of(
+                                        new Subject("Math", 100),
+                                        new Subject("Lang", 60),
+                                        new Subject("Philosophy", 80)
+                                )
+                        ),
+                        new Pupil("Petrov",
+                                List.of(
+                                        new Subject("Math", 80),
+                                        new Subject("Lang", 80),
+                                        new Subject("Philosophy", 70)
+                                )
+                        ),
+                        new Pupil("Sidorov",
+                                List.of(
+                                        new Subject("Math", 70),
+                                        new Subject("Lang", 60),
+                                        new Subject("Philosophy", 50)
+                                )
+                        )
+                )
+        );
+        assertThat(best).isEqualTo(new Label("Ivanov", 240D));
+    }
+
+    @Test
+    public void whenBestSubject() {
+        Label best = AnalyzeByMap.bestSubject(
+                List.of(
+                        new Pupil("Ivanov",
+                                List.of(
+                                        new Subject("Math", 100),
+                                        new Subject("Lang", 60),
+                                        new Subject("Philosophy", 80)
+                                )
+                        ),
+                        new Pupil("Petrov",
+                                List.of(
+                                        new Subject("Math", 80),
+                                        new Subject("Lang", 90),
+                                        new Subject("Philosophy", 70)
+                                )
+                        ),
+                        new Pupil("Sidorov",
+                                List.of(
+                                        new Subject("Math", 70),
+                                        new Subject("Lang", 60),
+                                        new Subject("Philosophy", 50)
+                                )
+                        )
+                )
+        );
+        assertThat(best).isEqualTo(new Label("Math", 250D));
+    }
 }
