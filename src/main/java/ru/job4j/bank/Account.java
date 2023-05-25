@@ -31,7 +31,7 @@ public class Account {
 
     /**
      * геттер реквизита
-     * @return возвращает номер реквизита
+     * @return возвращает номер реквизит
      */
     public String getRequisite() {
         return requisite;
