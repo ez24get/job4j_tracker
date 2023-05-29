@@ -12,7 +12,7 @@ public class LambdaUsage {
         System.out.println("Descending comparison:");
         strings.sort(comparator);
         for (String str : strings) {
-            System.out.println(str);
+            System.out.println("Длина строки " + str + " - " + str.length());
         }
     }
 }
