@@ -13,7 +13,7 @@ public class ListToMap {
                 .collect(
                 Collectors.toMap(
                         Student::getSurname,
-                        e -> new Student(e.getScore(), e.getSurname()),
+                        e -> e,
                         (e, e1) -> e
                 ));
     }
