@@ -9,24 +9,6 @@ public class Car {
 
     private LocalDate created;
 
-    @Override
-    public String toString() {
-        return "Car{"
-                + "brand='"
-                + brand
-                + '\''
-                + ", model='"
-                + model + '\''
-                + ", created="
-                + created
-                + ", volume="
-                + volume
-                + ", color='"
-                + color
-                + '\''
-                + '}';
-    }
-
     private double volume;
 
     private String color;
@@ -72,6 +54,24 @@ public class Car {
             car.color = color;
             return car;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Car{"
+                + "brand='"
+                + brand
+                + '\''
+                + ", model='"
+                + model + '\''
+                + ", created="
+                + created
+                + ", volume="
+                + volume
+                + ", color='"
+                + color
+                + '\''
+                + '}';
     }
 
     public static void main(String[] args) {
