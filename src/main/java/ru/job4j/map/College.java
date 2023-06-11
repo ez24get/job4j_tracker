@@ -27,7 +27,7 @@ public class College {
         Optional<Subject> rsl = Optional.empty();
         Optional<Student> a = findByAccount(account);
         if (a.isPresent()) {
-            for (Subject subject : students.get(a)) {
+            for (Subject subject : students.get(a.get())) {
                 if (subject.name().equals(name)) {
                     rsl = Optional.of(subject);
                     break;
