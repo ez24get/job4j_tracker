@@ -15,7 +15,7 @@ public class ShowAllAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public void execute(Input input, Store tracker) {
         out.println("=== Show all items ===");
         List<Item> items = tracker.findAll();
         if (!items.isEmpty()) {
@@ -25,6 +25,10 @@ public class ShowAllAction implements UserAction {
         } else {
             out.println("Хранилище еще не содержит заявок");
         }
+    }
+
+    @Override
+    public boolean exit() {
         return true;
     }
 }

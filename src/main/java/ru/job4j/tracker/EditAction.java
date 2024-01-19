@@ -13,7 +13,7 @@ public class EditAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public void execute(Input input, Store tracker) {
         out.println("=== Edit item ===");
         int id = input.askInt("Enter ID: ");
         String name = input.askStr("Enter name: ");
@@ -23,6 +23,10 @@ public class EditAction implements UserAction {
         } else {
             out.println("Ошибка замены заявки.");
         }
+    }
+
+    @Override
+    public boolean exit() {
         return true;
     }
 }
