@@ -96,7 +96,7 @@ public class SqlTracker implements Store {
     @Override
     public List<Item> findAll() {
         List<Item> items = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM cities")) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM items")) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     items.add(new Item(
@@ -114,7 +114,7 @@ public class SqlTracker implements Store {
     @Override
     public List<Item> findByName(String key) {
         List<Item> items = new ArrayList<>();
-        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM cities")) {
+        try (PreparedStatement statement = connection.prepareStatement("SELECT * FROM items")) {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     if (resultSet.getString("name").equals(key)) {
@@ -135,7 +135,7 @@ public class SqlTracker implements Store {
     public Item findById(int id) {
         Item item = new Item();
         try (PreparedStatement statement =
-                     connection.prepareStatement("SELECT id, name FROM cities WHERE id = ?")) {
+                     connection.prepareStatement("SELECT id, name FROM items WHERE id = ?")) {
             statement.setInt(1, id);
             statement.execute();
             try (ResultSet resultSet = statement.executeQuery()) {
