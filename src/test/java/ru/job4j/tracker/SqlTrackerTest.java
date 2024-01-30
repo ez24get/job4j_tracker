@@ -4,7 +4,6 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.job4j.tracker.Item;
 
 import java.io.InputStream;
 import java.sql.Connection;
@@ -56,5 +55,59 @@ public class SqlTrackerTest {
         Item item = new Item("item");
         tracker.add(item);
         assertThat(tracker.findById(item.getId())).isEqualTo(item);
+    }
+
+    @Test
+    public void whenReplace() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        Item item2 = new Item("replaced");
+        tracker.add(item);
+        int id = item.getId();
+        tracker.replace(id, item2);
+        assertThat(tracker.findById(id)).isEqualTo(item2);
+    }
+
+    @Test
+    public void whenDelete() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        tracker.delete(item.getId());
+        assertThat(tracker.findById(item.getId())).isNull();
+    }
+
+    @Test
+    public void whenFindAll() {
+        SqlTracker tracker = new SqlTracker(connection);
+        List<String> items = new ArrayList<>();
+        List<String> result = new ArrayList<>();
+        Item one = new Item("one");
+        Item two = new Item("two");
+        items.add(one.getName());
+        items.add(two.getName());
+        tracker.add(one);
+        tracker.add(two);
+        result.add(tracker.findById(one.getId()).getName());
+        result.add(tracker.findById(two.getId()).getName());
+        assertThat(result.equals(items)).isTrue();
+    }
+
+    @Test
+    public void whenByName() {
+        SqlTracker tracker = new SqlTracker(connection);
+        List<String> items = new ArrayList<>();
+        List<String> result = new ArrayList<>();
+        Item one = new Item("one");
+        Item two = new Item("one");
+        items.add(one.getName());
+        items.add(two.getName());
+        tracker.add(one);
+        tracker.add(two);
+        List<Item> found = new ArrayList<>(tracker.findByName("one"));
+        for (Item i : found) {
+            result.add(i.getName());
+        }
+        assertThat(result.equals(items)).isTrue();
     }
 }

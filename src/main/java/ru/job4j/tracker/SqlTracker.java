@@ -137,7 +137,7 @@ public class SqlTracker implements Store {
     public Item findById(int id) {
         Item item = new Item();
         try (PreparedStatement statement =
-                     connection.prepareStatement("SELECT id, name FROM items WHERE id = ?")) {
+                     connection.prepareStatement("SELECT id, name, created FROM items WHERE id = ?")) {
             statement.setInt(1, id);
             statement.execute();
             try (ResultSet resultSet = statement.executeQuery()) {
