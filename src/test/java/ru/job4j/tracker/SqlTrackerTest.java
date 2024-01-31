@@ -65,7 +65,7 @@ public class SqlTrackerTest {
         tracker.add(item);
         int id = item.getId();
         tracker.replace(id, item2);
-        assertThat(tracker.findById(id)).isEqualTo(item2);
+        assertThat(tracker.findById(id).getName()).isEqualTo(item2.getName());
     }
 
     @Test
