@@ -2,10 +2,10 @@ package ru.job4j.tracker;
 
 import java.util.List;
 
-public class StartUI {
+public class ProfilingTrackerUI {
     private final Output out;
 
-    public StartUI(Output out) {
+    public ProfilingTrackerUI(Output out) {
         this.out = out;
     }
 
@@ -36,7 +36,7 @@ public class StartUI {
         Input input = new ValidateInput(
                 output, new ConsoleInput()
         );
-        try (Store tracker = new SqlTracker()) {
+        try (Store tracker = new MemTracker()) {
             List<UserAction> actions = List.of(
                     new CreateAction(output),
                     new CreateManyItems(output),
@@ -46,6 +46,7 @@ public class StartUI {
                     new DeleteAllItems(output),
                     new FindByIdAction(output),
                     new FindByNameAction(output),
+                    new MemoryErrorAction(output),
                     new ExitAction(output)
             );
             new ProfilingTrackerUI(output).init(input, tracker, actions);
