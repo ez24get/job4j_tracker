@@ -1,4 +1,6 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.profilingmem;
+
+import ru.job4j.tracker.*;
 
 public class MemoryErrorAction implements UserAction {
     private final Output out;

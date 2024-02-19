@@ -48,7 +48,7 @@ public class StartUI {
                     new FindByNameAction(output),
                     new ExitAction(output)
             );
-            new ProfilingTrackerUI(output).init(input, tracker, actions);
+            new StartUI(output).init(input, tracker, actions);
         } catch (Exception e) {
             e.printStackTrace();
         }
