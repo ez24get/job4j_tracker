@@ -14,7 +14,7 @@ public class CreateAction implements UserAction {
 
     @Override
     public void execute(Input input, Store tracker) {
-        out.println("== Create one new Item ==");
+        out.println("== Create one new Item =");
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
